@@ -26,7 +26,7 @@ export const Content = () => {
     };
 
     api
-      .post("tasks", newTask)
+      .post("task", newTask)
       .then((response) => {
         setTaskListState((currentValue) => [...currentValue, newTask]);
       })
@@ -40,7 +40,7 @@ export const Content = () => {
       currentValue.filter((task) => task.id !== id)
     );
 
-    api.delete("tasks/" + id).then((response) => {
+    api.delete("task/" + id).then((response) => {
       setTaskListState((currentValue) =>
         currentValue.filter((task) => task.id !== id)
       );
@@ -51,7 +51,7 @@ export const Content = () => {
     const task = taskListState.find((task) => task.id === id);
 
     if (task) {
-      api.patch("tasks/"+ task.id, {
+      api.patch("task/"+ task.id, {
         isDone: !task.isDone
       })
     }
@@ -72,7 +72,7 @@ export const Content = () => {
 
   useEffect(() => {
     api
-      .get("tasks")
+      .get("task")
       .then((response) => {
         return response.data;
       })
