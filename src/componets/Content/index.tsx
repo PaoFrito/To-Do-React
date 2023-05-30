@@ -27,7 +27,7 @@ export const Content = () => {
 
     api
       .post("task", newTask)
-      .then((response) => {
+      .then(() => {
         setTaskListState((currentValue) => [...currentValue, newTask]);
       })
       .finally(() => {
@@ -40,7 +40,7 @@ export const Content = () => {
       currentValue.filter((task) => task.id !== id)
     );
 
-    api.delete("task/" + id).then((response) => {
+    api.delete("task/" + id).then(() => {
       setTaskListState((currentValue) =>
         currentValue.filter((task) => task.id !== id)
       );
